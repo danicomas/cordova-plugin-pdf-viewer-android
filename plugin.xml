@@ -1,0 +1,30 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-pdf-viewer-android" version="0.0.1">
+    <name>PDFViewer</name>
+    <description>A PDF viewer plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,pdf</keywords>
+    <js-module src="www/pdfviewer.js" name="PDFViewer">
+        <clobbers target="PDFViewer" />
+    </js-module>
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="PDFViewer">
+                <param name="android-package" value="com.ingensnetworks.plugin.PDFViewer"/>
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+        </config-file>
+        <source-file src="src/android/PDFViewer.java" target-dir="src/com/ingensnetworks/plugin"/>
+		<source-file src="src/android/PDFViewerActivity.java" target-dir="src/com/ingensnetworks/plugin"/>
+		<source-file src="src/android/activity_pdfviewer.xml" target-dir="res/layout"/>
+		<framework src="com.github.barteksc:android-pdf-viewer:2.6.1" />
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<activity android:name="com.ingensnetworks.plugin.PDFViewerActivity" />
+		</config-file>
+    </platform>    
+</plugin>
