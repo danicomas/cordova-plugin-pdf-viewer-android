@@ -1,15 +1,15 @@
 package com.ingensnetworks.plugin;
 
+import android.app.ActionBar;
 import android.app.Activity;
-import android.os.Environment;
 import android.os.Bundle;
 import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.github.barteksc.pdfviewer.PDFView;
-
-import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
 
 import java.io.File;
 
@@ -22,6 +22,12 @@ public class PDFViewerActivity extends Activity {
     setContentView(getApplication().getResources().getIdentifier("activity_pdfviewer", "layout", package_name));
     Intent intent = getIntent();
     String name = intent.getStringExtra("filename");
+
+    ActionBar actionbar = getActionBar();
+    //actionbar.setHomeAsUpIndicator(R.mipmap.icon);
+    //actionbar.setDisplayHomeAsUpEnabled(true);
+    actionbar.setDisplayShowHomeEnabled(false);
+    actionbar.setTitle("");
 
     PDFView pdfView = (PDFView)findViewById(getResources().getIdentifier("pdfView", "id", getPackageName()));
     File file = new File(name);
@@ -47,6 +53,23 @@ public class PDFViewerActivity extends Activity {
         finish();
       }
     });
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    menu.add(0, 0, 0, "Done").setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      //case android.R.id.home:
+      case 0:
+        onBackPressed();
+        return true;
+    }
+    return false;
   }
 
   @Override
