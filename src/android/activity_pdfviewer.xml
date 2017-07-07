@@ -13,14 +13,35 @@
     <com.github.barteksc.pdfviewer.PDFView
       android:id="@+id/pdfView"
       android:layout_width="match_parent"
-      android:layout_height="0dip"
+      android:layout_height="match_parent"
       android:layout_weight="1" />
-    <Button
-      android:id="@+id/button1"
+
+    <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="Sign"
       android:layout_weight="0"
-      android:layout_gravity="bottom"/>
+      android:orientation="horizontal">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+          android:id="@+id/btncancel"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_gravity="bottom"
+          android:visibility="gone"/>
+        <Button
+          android:id="@+id/btnok"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_gravity="bottom"
+          android:visibility="gone"/>
+          </LinearLayout>
+    </LinearLayout>
   </LinearLayout>
 </LinearLayout>

@@ -22,10 +22,11 @@ public class PDFViewerActivity extends Activity {
     setContentView(getApplication().getResources().getIdentifier("activity_pdfviewer", "layout", package_name));
     Intent intent = getIntent();
     String name = intent.getStringExtra("filename");
+    String cancel = intent.getStringExtra("cancel");
+    String ok = intent.getStringExtra("ok");
+    Integer showButtons = intent.getIntExtra("showButtons", 0);
 
     ActionBar actionbar = getActionBar();
-    //actionbar.setHomeAsUpIndicator(R.mipmap.icon);
-    //actionbar.setDisplayHomeAsUpEnabled(true);
     actionbar.setDisplayShowHomeEnabled(false);
     actionbar.setTitle("");
 
@@ -43,16 +44,33 @@ public class PDFViewerActivity extends Activity {
       }
     }
 
-    Button btnSign = (Button)findViewById(getResources().getIdentifier("button1", "id", getPackageName()));
-    btnSign.setOnClickListener( new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent intent = new Intent();
-        intent.putExtra("action", "sign");
-        setResult(Activity.RESULT_OK, intent);
-        finish();
+    Button btnOK = (Button)findViewById(getResources().getIdentifier("btnok", "id", getPackageName()));
+
+    if(showButtons == 1 || showButtons == 2) {
+      btnOK.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          Intent intent = new Intent();
+          intent.putExtra("action", "1");
+          setResult(Activity.RESULT_OK, intent);
+          finish();
+        }
+      });
+      btnOK.setText(ok);
+      btnOK.setVisibility(View.VISIBLE);
+
+      Button btnCancel = (Button) findViewById(getResources().getIdentifier("btncancel", "id", getPackageName()));
+      if (showButtons == 2) {
+        btnCancel.setText(cancel);
+        btnCancel.setVisibility(View.VISIBLE);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            onBackPressed();
+          }
+        });
       }
-    });
+    }
   }
 
   @Override
@@ -64,7 +82,6 @@ public class PDFViewerActivity extends Activity {
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
-      //case android.R.id.home:
       case 0:
         onBackPressed();
         return true;
@@ -75,7 +92,7 @@ public class PDFViewerActivity extends Activity {
   @Override
   public void onBackPressed() {
     Intent intent = new Intent();
-    intent.putExtra("action", "close");
+    intent.putExtra("action", "0");
     setResult(Activity.RESULT_OK, intent);
     finish();
   }

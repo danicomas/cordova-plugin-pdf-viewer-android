@@ -1,3 +1,4 @@
+cordova.define("cordova-plugin-pdf-viewer-android.PDFViewer", function(require, exports, module) {
 /* MIT licensed */
 // (c) 2017 Ingens Networks
 //
@@ -15,8 +16,18 @@ var PDFViewer = {
 	/* The interface that you will use to access functionality */
 
 	// Show a webpage, will result in a callback to onLocationChange
-	showPDF: function(loc, callback) {
-		exec(callback, null, 'PDFViewer', 'showPDF', [loc]);
+	showPDF: function(loc, options, callback) {
+	  var defaultOptions = {
+	      showButtons: 0, //0: no buttons; 1: ok button, 2: ok and cancel button
+          cancel: "Cancel",
+          ok: "OK"
+      };
+
+	   Object.keys(options).forEach(function (key) {
+         defaultOptions[key] = options[key];
+     });
+
+		exec(callback, null, 'PDFViewer', 'showPDF', [loc, defaultOptions]);
 	},
 
 	// close the browser, will NOT result in close callback
@@ -29,3 +40,4 @@ var PDFViewer = {
 };
 
 module.exports = PDFViewer;
+});
