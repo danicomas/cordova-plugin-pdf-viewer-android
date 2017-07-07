@@ -1,4 +1,3 @@
-cordova.define("cordova-plugin-pdf-viewer-android.PDFViewer", function(require, exports, module) {
 /* MIT licensed */
 // (c) 2017 Ingens Networks
 //
@@ -40,4 +39,3 @@ var PDFViewer = {
 };
 
 module.exports = PDFViewer;
-});
