@@ -75,7 +75,7 @@ public class PDFViewerActivity extends Activity {
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    menu.add(0, 0, 0, "Done").setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+    menu.add(0, 0, 0, "Cancel").setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
     return true;
   }
 
