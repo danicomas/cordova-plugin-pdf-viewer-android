@@ -1,0 +1,30 @@
+{
+  "name": "cordova-plugin-pdf-viewer-android",
+  "version": "0.0.2",
+  "description": "A PDF viewer plugin",
+  "cordova": {
+    "id": "cordova-plugin-pdf-viewer-android",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danicomas/cordova-plugin-pdf-viewer-android.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "pdf"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danicomas/cordova-plugin-pdf-viewer-android/issues"
+  },
+  "homepage": "https://github.com/danicomas/cordova-plugin-pdf-viewer-android#readme"
+}
